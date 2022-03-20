@@ -51,7 +51,12 @@ app-sort-range {
 }
 
 app-entry {
-  position:-webkit-sticky;
-  position: sticky;
-  top:0px;
+  transition: transform 0.5s, opacity 0.5s;
+  transform: translateX(0px);
+  opacity: 1;
+
+  &.hidden {
+    transition: opacity 0.25s;
+    opacity: 0;
+  }
 }

@@ -6,9 +6,9 @@
       <app-card
         *ngFor="let poke of pokemons"
         [poke]="poke"
-        (click)="activePokemon = poke"
+        (click)="setActivePokemon(poke)"
       ></app-card>
     </div>
   </div>
-  <app-entry *ngIf="activePokemon" [pokemon]="activePokemon"></app-entry>
+  <app-entry *ngIf="activePokemon" [pokemon]="activePokemon" #entry></app-entry>
 </div>

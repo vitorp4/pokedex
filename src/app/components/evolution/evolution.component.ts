@@ -22,8 +22,8 @@ export class EvolutionComponent implements OnInit, OnChanges {
   pokemonSpecies: any;
 
   pokemon1!: any;
-  pokemon2!: any[];
-  pokemon3!: any[];
+  pokemon2: any[] = [];
+  pokemon3: any[] = [];
 
   chain!: any;
 
