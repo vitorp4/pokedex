@@ -1,0 +1,26 @@
+.stat-wrapper {
+  border-radius: 20px;
+  background-color: var(--background-color);
+  padding: 2px;
+  cursor: default;
+  //border: 0.5px solid var(--border-color);
+}
+
+.stat-wrapper .inner-circle {
+  border-radius: 50%;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  height: 28px;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-wrapper .stat-value {
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 0;
+}

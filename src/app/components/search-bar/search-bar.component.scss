@@ -1,0 +1,35 @@
+.search-wrapper {
+  border-radius: 20px;
+  border: 1px solid rgba(238, 238, 238);
+  box-shadow: 2px 3px 10px rgba(5, 5, 165, 0.04);
+  background-color: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 8px 8px 8px 24px;
+}
+
+.search-wrapper input {
+  flex: 1;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  color: var(--text-title-color);
+  font-weight: 500;
+
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    font-family: "Poppins", sans-serif;
+    color: var(--text-number-color);
+    font-weight: 400;
+  }
+}
+
+.search-wrapper app-button-search {
+  width: 30px;
+  height: 30px;
+}

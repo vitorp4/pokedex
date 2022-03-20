@@ -1,0 +1,77 @@
+.poke-card {
+  border-radius: 20px;
+  box-shadow: 2px 3px 10px rgba(5, 5, 165, 0.04);
+  background-color: #ffffff;
+  border: 1px solid rgb(238, 238, 238);
+  width: 180px;
+  padding-bottom: 24px;
+  position: relative;
+  transition: box-shadow 0.5s, transform 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 3px 10px rgba(3, 3, 119, 0.15);
+
+    .poke-sprite {
+      transform: translateX(-50%) translateY(-6px) scale(1.2);
+    }
+  }
+
+  &:active {
+    transform: translateY(-7px);
+  }
+}
+
+.poke-card .poke-sprite {
+  --size: 70px;
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
+  top: calc(var(--size) / -2);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.6s;
+}
+
+.poke-card .poke-sprite.large-img {
+  --size: 90px;
+}
+
+.poke-card .card-content {
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poke-card .card-content .national-number {
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 10px;
+  color: var(--text-number-color);
+}
+
+.poke-card .card-content .poke-name {
+  text-transform: capitalize;
+  font-size: 14px;
+  color: var(--text-title-color);
+  font-weight: 700;
+  padding: 2px 0 8px;
+}
+
+.poke-card .card-content .type-badges-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 6px;
+}
+
+.poke-card .card-content .type-badges-container .type-badge {
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+}

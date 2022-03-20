@@ -1,0 +1,123 @@
+.outer-card {
+  position: relative;
+  width: 330px;
+  padding: 0 16px 16px;
+  border-radius: 20px;
+  box-shadow: 2px 3px 10px rgba(5, 5, 165, 0.05);
+  background-color: white;
+  border: 1px solid rgb(238, 238, 238);
+  top: 70px;
+}
+
+.outer-card .poke-sprite {
+  --size: 170px;
+  width: var(--size);
+  height: auto;
+  position: absolute;
+  top: calc(var(--size) / -2);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.outer-card .poke-sprite.large-img {
+  --size: 190px;
+}
+
+.outer-card .card-content {
+  padding: 80px 0 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outer-card .card-content .national-number {
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 10px;
+  color: var(--text-number-color);
+}
+
+.outer-card .card-content .poke-name {
+  text-transform: capitalize;
+  font-size: 18px;
+  color: var(--text-title-color);
+  font-weight: 700;
+  padding: 2px 0 8px;
+}
+
+.outer-card .card-content .type-badges-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 6px;
+}
+
+.outer-card .card-content .type-badges-container .type-badge {
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.03);
+  color: white;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
+  color: var(--text-title-color);
+  font-weight: 700;
+  padding: 14px 0 4px;
+  letter-spacing: 0.5px;
+}
+
+.abilities-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 4px;
+  width: 100%;
+  justify-content: center;
+}
+
+.grid-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  min-width: 100%;
+}
+
+.info-container {
+  border-radius: 20px;
+  font-size: 13px;
+  padding: 4px;
+  text-align: center;
+  font-weight: 600;
+  background-color: var(--background-color);
+  //border: 0.5px solid var(--border-color);
+
+  &.weakness {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 2px;
+    justify-content: center;
+
+    img {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &.ability {
+    width: 50%;
+    text-transform: capitalize;
+  }
+}
+
+.stats-bar {
+  min-width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}

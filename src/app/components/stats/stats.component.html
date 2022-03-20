@@ -1,0 +1,15 @@
+<div
+  class="stat-wrapper"
+  [style.background-color]="
+    abreviation == 'TOT' ? 'var(--stat-TOT-background-color)' : ''
+  "
+  [title]="stat"
+>
+  <div
+    class="inner-circle"
+    [style.background-color]="'var(--stat-' + abreviation + '-color)'"
+  >
+    {{ abreviation }}
+  </div>
+  <div class="stat-value">{{ value }}</div>
+</div>

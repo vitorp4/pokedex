@@ -1,0 +1,61 @@
+
+button.search-button {
+	border: none;
+  padding: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 16px;
+	background-color: #fa5150;
+	box-shadow: 2px 2px 16px 4px #fa515088;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform 0.1s, box-shadow 0.3s;
+  position: relative;
+
+  &:hover {
+    box-shadow: 2px 2px 16px 4px #fa5150bb;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.inner-pokeball {
+	position: absolute;
+	height: 55%;
+	width: 55%;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: 0.5s;
+
+  &.rotate {
+    transform: rotate(180deg);
+  }
+}
+
+.inner-pokeball::after {
+	content: '';
+	position: absolute;
+	background-color: #fff;
+	border: 3.5px solid #fa5150;
+	border-radius: 50%;
+	width: 20%;
+	height: 20%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.inner-pokeball::before {
+	content: '';
+	background-color: #fa5150;
+	width: 110%;
+	height: 3px;
+	top: 50%;
+	left: 0;
+	position: absolute;
+	transform: translateY(-50%);
+}

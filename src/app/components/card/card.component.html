@@ -1,0 +1,40 @@
+<div class="poke-card">
+  <img
+    class="poke-sprite"
+    [class.large-img]="
+      poke?.id == 3 ||
+      poke?.id == 6 ||
+      poke?.id == 154 ||
+      poke?.id == 157 ||
+      poke?.id == 160 ||
+      poke?.id == 254 ||
+      poke?.id === 257 ||
+      poke?.id == 260 ||
+      poke?.id == 264 ||
+      poke?.id == 330 ||
+      poke?.id == 382 ||
+      poke?.id == 389 ||
+      poke?.id == 392 ||
+      poke?.id == 395 ||
+      poke?.id == 450
+    "
+
+    [src]="poke?.sprites.other['official-artwork'].front_default"
+  />
+  <!-- https://serebii.net/swordshield/pokemon/813.png -->
+  <!-- poke?.sprites.other['official-artwork'].front_default -->
+  <!-- https://projectpokemon.org/images/normal-sprite/ -->
+  <div class="card-content">
+    <div class="national-number">#{{ poke?.id }}</div>
+    <div class="poke-name">{{ getPokemonName(poke?.name) }}</div>
+    <div class="type-badges-container">
+      <div
+        [style.backgroundColor]="'var(--' + type.type.name + '-type-color)'"
+        class="type-badge"
+        *ngFor="let type of poke?.types"
+      >
+        {{ type.type.name }}
+      </div>
+    </div>
+  </div>
+</div>

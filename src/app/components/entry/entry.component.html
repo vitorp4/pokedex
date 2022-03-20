@@ -1,0 +1,62 @@
+<div class="outer-card">
+  <img
+    class="poke-sprite"
+    [class.large-img]="pokemon?.id == 3 || pokemon?.id == 6"
+    [src]="pokemon?.sprites.other['official-artwork'].front_default"
+  />
+  <div class="card-content">
+    <div class="national-number">#{{ pokemon?.id }}</div>
+    <div class="poke-name">{{ getPokemonName(pokemon?.name) }}</div>
+    <div class="type-badges-container">
+      <div
+        [style.backgroundColor]="'var(--' + type.type.name + '-type-color)'"
+        class="type-badge"
+        *ngFor="let type of pokemon?.types"
+      >
+        {{ type.type.name }}
+      </div>
+    </div>
+    <div class="title">Abilities</div>
+    <div class="abilities-container">
+      <ng-container *ngFor="let ability of pokemon?.abilities"
+        ><div class="info-container ability" *ngIf="!ability.is_hidden">{{ ability.ability.name }}</div>
+      </ng-container>
+    </div>
+    <div class="grid-info">
+      <div>
+        <div class="title">height</div>
+        <div class="info-container">{{ pokemon?.height/10 }}m</div>
+      </div>
+      <div>
+        <div class="title">weight</div>
+        <div class="info-container">{{ pokemon?.weight/10 }}kg</div>
+      </div>
+      <div>
+        <div class="title">weaknessess</div>
+        <div class="info-container weakness">
+          <img
+            *ngFor="let weak of weakness"
+            [src]="'assets/' + weak + '_type_icon.svg'"
+            [title]="weak"
+          />
+        </div>
+      </div>
+      <div>
+        <div class="title">base exp</div>
+        <div class="info-container">{{ pokemon?.base_experience }}</div>
+      </div>
+    </div>
+    <div class="title">stats</div>
+    <div class="stats-bar">
+      <app-stats
+        *ngFor="let stat of pokemon?.stats"
+        [stat]="stat.stat.name"
+        [value]="stat.base_stat"
+      ></app-stats>
+      <app-stats [stat]="'total'" [value]="totalStatValue"></app-stats>
+    </div>
+    <div class="title">evolution</div>
+    <app-evolution [poke]="pokemon"></app-evolution>
+  </div>
+  <app-prev-next (updatePoke)="updatePokemon($event)" class="prev-next" [pokeId]="pokemon?.id"></app-prev-next>
+</div>

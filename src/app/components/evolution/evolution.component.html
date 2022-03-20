@@ -1,0 +1,64 @@
+<div class="evolution-container">
+  <img
+    class="poke-img"
+    [src]="pokemon1?.sprites.other['official-artwork'].front_default"
+    [title]="getPokemonName(pokemon1?.name)"
+  />
+
+  <ng-container *ngIf="chainLength > 1">
+    <div class="evo-wrapper">
+      <div
+        class="evo"
+        *ngFor="let evo of chain?.chain.evolves_to; let i = index"
+      >
+        <img
+          class="trigger-img"
+          [src]="
+            getImgSrcEvolutionTrigger(
+              chain?.chain.evolves_to[i].evolution_details,
+              chain?.chain.evolves_to[i].species.name
+            )
+          "
+        />
+
+        <img
+          class="poke-img"
+          [src]="pokemon2[i]?.sprites.other['official-artwork'].front_default"
+          [title]="getPokemonName(pokemon2[i]?.name)"
+        />
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="chainLength === 3">
+    <div class="evo-wrapper">
+      <ng-container *ngFor="let evo1 of chain?.chain.evolves_to; let i = index">
+        <div
+          class="evo"
+          *ngFor="
+            let evo2 of chain?.chain.evolves_to[i].evolves_to;
+            let j = index
+          "
+        >
+          <img
+            class="trigger-img"
+            [src]="
+              getImgSrcEvolutionTrigger(
+                chain?.chain.evolves_to[i].evolves_to[j].evolution_details,
+                chain?.chain.evolves_to[i].evolves_to[j].species.name
+              )
+            "
+          />
+
+          <img
+            class="poke-img"
+            [src]="
+              pokemon3[i + j]?.sprites.other['official-artwork'].front_default
+            "
+            [title]="getPokemonName(pokemon3[i + j]?.name)"
+          />
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

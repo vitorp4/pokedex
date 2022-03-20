@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="left-container">
+    <app-search-bar></app-search-bar>
+    <app-sort-range></app-sort-range>
+    <div class="poke-grid-container">
+      <app-card
+        *ngFor="let poke of pokemons"
+        [poke]="poke"
+        (click)="activePokemon = poke"
+      ></app-card>
+    </div>
+  </div>
+  <app-entry *ngIf="activePokemon" [pokemon]="activePokemon"></app-entry>
+</div>
