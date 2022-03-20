@@ -2,9 +2,11 @@ import { PokeApiService } from './../../services/poke-api.service';
 import { getPokemonName } from '../../common/common';
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 
@@ -17,6 +19,7 @@ export class EvolutionComponent implements OnInit, OnChanges {
   constructor(private pokeApiService: PokeApiService) {}
   getPokemonName = getPokemonName;
   @Input() poke!: any;
+  @Output() updatePoke: EventEmitter<any> = new EventEmitter<any>();
   chainLength!: number;
   evolutionChain!: any;
   pokemonSpecies: any;
@@ -151,5 +154,9 @@ export class EvolutionComponent implements OnInit, OnChanges {
     }
 
     return `https://www.serebii.net/pokedex-swsh/evoicon/${appendPath}.png`;
+  }
+
+  emitPoke(poke: any) {
+    this.updatePoke.emit(poke);
   }
 }

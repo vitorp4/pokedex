@@ -56,7 +56,7 @@
       <app-stats [stat]="'total'" [value]="totalStatValue"></app-stats>
     </div>
     <div class="title">evolution</div>
-    <app-evolution [poke]="pokemon"></app-evolution>
+    <app-evolution (updatePoke)="updatePokemon($event)" [poke]="pokemon"></app-evolution>
   </div>
   <app-prev-next (updatePoke)="updatePokemon($event)" class="prev-next" [pokeId]="pokemon?.id"></app-prev-next>
 </div>

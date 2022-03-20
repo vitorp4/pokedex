@@ -2,6 +2,7 @@
   <img
     class="poke-img"
     [src]="pokemon1?.sprites.other['official-artwork'].front_default"
+    (click)="emitPoke(pokemon1)"
     [title]="getPokemonName(pokemon1?.name)"
   />
 
@@ -24,6 +25,7 @@
         <img
           class="poke-img"
           [src]="pokemon2[i]?.sprites.other['official-artwork'].front_default"
+          (click)="emitPoke(pokemon2[i])"
           [title]="getPokemonName(pokemon2[i]?.name)"
         />
       </div>
@@ -55,6 +57,7 @@
             [src]="
               pokemon3[i + j]?.sprites.other['official-artwork'].front_default
             "
+            (click)="emitPoke(pokemon3[i+j])"
             [title]="getPokemonName(pokemon3[i + j]?.name)"
           />
         </div>

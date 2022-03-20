@@ -1,5 +1,5 @@
 import { PokeApiService } from './../../services/poke-api.service';
-import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
 import { getPokemonName } from '../../common/common';
 
 @Component({
@@ -14,6 +14,7 @@ export class EntryComponent implements OnInit, OnChanges {
   totalStatValue!: number;
   typesInfo!: any[];
   weakness!: string[];
+  @Output() update: EventEmitter<any> = new EventEmitter<any>();
   getPokemonName = getPokemonName;
 
   ngOnInit(): void {}
@@ -84,7 +85,6 @@ export class EntryComponent implements OnInit, OnChanges {
   }
 
   updatePokemon(event: any) {
-    this.pokemon = event;
-    this.updateState();
+    this.update.emit(event);
   }
 }

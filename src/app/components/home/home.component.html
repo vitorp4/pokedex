@@ -10,5 +10,5 @@
       ></app-card>
     </div>
   </div>
-  <app-entry *ngIf="activePokemon" [pokemon]="activePokemon" #entry></app-entry>
+  <app-entry (update)="setActivePokemon($event)" *ngIf="activePokemon" [pokemon]="activePokemon" #entry></app-entry>
 </div>
