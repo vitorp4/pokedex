@@ -6,6 +6,12 @@
   display: flex;
   flex-flow: row nowrap;
   padding: 8px 8px 8px 24px;
+  z-index: 2;
+  min-width: 100%;
+
+  &:focus-within {
+    box-shadow: 4px 4px 15px 8px rgba(0,0,0,0.1);
+  }
 }
 
 .search-wrapper input {
@@ -14,9 +20,6 @@
   font-family: "Poppins", sans-serif;
   color: var(--text-title-color);
   font-weight: 500;
-
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
 
   &:focus {
     outline: none;
@@ -32,4 +35,14 @@
 .search-wrapper app-button-search {
   width: 30px;
   height: 30px;
+}
+
+.search-results {
+  width: 100%;
+  min-height: 600px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin-top: 16px;
+  position: absolute;
+  box-shadow: 4px 4px 15px 8px rgba(0,0,0,0.1);
 }

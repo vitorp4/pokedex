@@ -2,6 +2,7 @@ import { EntryComponent } from './../entry/entry.component';
 import { PokeApiService } from './../../services/poke-api.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,17 @@ export class HomeComponent implements OnInit {
   activePokemon: any;
   @ViewChild(EntryComponent, { read: ElementRef })
   entryCard!: ElementRef<HTMLElement>;
+  @ViewChild(SearchBarComponent, { read: ElementRef })
+  searchBar!: ElementRef<HTMLElement>;
   pastScrollTop = 0;
+  searchActive = false;
+  loadingInitial = false;
+  showFabScrollTop = false;
 
   ngOnInit(): void {
+    this.loadingInitial = true;
     this.pokeapi
-      .getPokemonsByRange(898, 0)
+      .getPokemonsByRange(151, 0)
       .pipe(take(1))
       .subscribe((result) =>
         Promise.all(
@@ -29,12 +36,20 @@ export class HomeComponent implements OnInit {
         ).then((result: any) => {
           this.pokemons = result;
           this.activePokemon = result[0];
+          setTimeout(() => this.loadingInitial = false,3000);
         })
       );
 
     window.onscroll = () => {
       if (window.scrollY === 0) {
-        this.animateEntryCard();
+        this.showFabScrollTop = false;
+
+        if (this.pastScrollTop !== 0) {
+          this.pastScrollTop = 0;
+          this.animateEntryCard();
+        }
+      } else {
+        this.showFabScrollTop = true;
       }
     };
   }
@@ -61,5 +76,9 @@ export class HomeComponent implements OnInit {
       this.entryCard.nativeElement.style.transform = 'translateX(0px)';
       this.entryCard.nativeElement.classList.remove('hidden');
     }, 350);
+  }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
 }

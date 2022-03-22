@@ -1,0 +1,16 @@
+.fab-scroll-top {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #fa5150;
+  color: #fff;
+  box-shadow: 2px 3px 10px rgba(5, 5, 165, 0.25);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}

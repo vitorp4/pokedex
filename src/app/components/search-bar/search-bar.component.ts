@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -9,7 +9,16 @@ export class SearchBarComponent implements OnInit {
 
   constructor() { }
 
+  pokeResult = [];
+
+  @Input() searchActive = false;
+  @Output() searchActiveChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   ngOnInit(): void {
+  }
+
+  toggleSearchActive(bool: boolean) {
+    this.searchActiveChange.emit(bool);
   }
 
 }

@@ -1,14 +1,33 @@
-<div class="container">
-  <div class="left-container">
-    <app-search-bar></app-search-bar>
-    <app-sort-range></app-sort-range>
-    <div class="poke-grid-container">
-      <app-card
-        *ngFor="let poke of pokemons"
-        [poke]="poke"
-        (click)="setActivePokemon(poke)"
-      ></app-card>
+<app-pikachu-loading [hidden]="!loadingInitial"></app-pikachu-loading>
+
+<ng-container *ngIf="!loadingInitial">
+  <div class="backdrop" *ngIf="searchActive"></div>
+
+  <div class="container">
+    <div class="left-container">
+      <app-search-bar
+        [(searchActive)]="searchActive"
+        [class.active]="searchActive"
+      ></app-search-bar>
+      <app-sort-range></app-sort-range>
+      <div class="poke-grid-container">
+        <app-card
+          *ngFor="let poke of pokemons"
+          [poke]="poke"
+          (click)="setActivePokemon(poke)"
+        ></app-card>
+      </div>
     </div>
+    <app-entry
+      [class.search-active]="searchActive"
+      (update)="setActivePokemon($event)"
+      *ngIf="activePokemon"
+      [pokemon]="activePokemon"
+      #entry
+    ></app-entry>
   </div>
-  <app-entry (update)="setActivePokemon($event)" *ngIf="activePokemon" [pokemon]="activePokemon" #entry></app-entry>
-</div>
+  <app-fab-scroll
+    *ngIf="showFabScrollTop"
+    (click)="scrollToTop()"
+  ></app-fab-scroll>
+</ng-container>

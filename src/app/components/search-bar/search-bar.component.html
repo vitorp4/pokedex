@@ -1,6 +1,12 @@
 <div class="search-wrapper">
-  <input type="text" placeholder="Search your Pokémon!"/>
+  <input
+    type="text"
+    (focus)="toggleSearchActive(true)"
+    (blur)="toggleSearchActive(false)"
+    placeholder="Search your Pokémon!"
+  />
   <app-search-button></app-search-button>
 </div>
-
-
+<div class="search-results" *ngIf="searchActive">
+  <app-search-result *ngFor="let poke of pokeResult"></app-search-result>
+</div>
