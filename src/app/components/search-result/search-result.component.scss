@@ -1,0 +1,48 @@
+.result-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  padding: 8px 16px;
+  gap: 16px;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--stat-TOT-background-color);
+  }
+}
+
+.result-wrapper .poke-img {
+  width: 50px;
+  height: auto;
+}
+
+.result-wrapper .poke-id {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-number-color);
+}
+
+.result-wrapper .poke-name {
+  text-transform: capitalize;
+  font-size: 18px;
+  color: var(--text-title-color);
+  font-weight: 700;
+}
+
+.result-wrapper .type-badges-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 8px;
+}
+
+.result-wrapper .type-badges-container .type-badge {
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.03);
+  color: white;
+}

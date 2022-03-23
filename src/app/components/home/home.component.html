@@ -8,6 +8,7 @@
       <app-search-bar
         [(searchActive)]="searchActive"
         [class.active]="searchActive"
+        (updatePoke)="setActivePokemon($event)"
       ></app-search-bar>
       <app-sort-range></app-sort-range>
       <div class="poke-grid-container">

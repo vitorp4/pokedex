@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { getPokemonName } from '../../common/common';
 
 @Component({
   selector: 'app-search-result',
@@ -11,5 +12,8 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @Input() poke: any;
+  getPokemonName = getPokemonName;
 
 }

@@ -1,1 +1,17 @@
-<p>search-result works!</p>
+<div class="result-wrapper">
+  <img
+    class="poke-img"
+    [src]="poke?.sprites.other['official-artwork'].front_default"
+  />
+  <div class="poke-id">#{{ poke?.id }}</div>
+  <div class="poke-name">{{ getPokemonName(poke?.name) }}</div>
+  <div class="type-badges-container">
+    <div
+      [style.backgroundColor]="'var(--' + type.type.name + '-type-color)'"
+      class="type-badge"
+      *ngFor="let type of poke?.types"
+    >
+      {{ type.type.name }}
+    </div>
+  </div>
+</div>

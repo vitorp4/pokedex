@@ -39,7 +39,9 @@
 
 .search-results {
   width: 100%;
-  min-height: 600px;
+  min-height: 300px;
+  max-height: 600px;
+  overflow-y: auto;
   border-radius: 20px;
   background-color: #fff;
   margin-top: 16px;

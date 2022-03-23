@@ -3,7 +3,7 @@
   position: fixed;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.05);
   backdrop-filter: blur(3px);
 }
 
@@ -73,7 +73,7 @@ app-entry {
   }
 
   &.search-active {
-    filter: drop-shadow(4px 4px 15px rgba(0,0,0,0.35));
+    filter: drop-shadow(4px 4px 15px rgba(0,0,0,0.1));
   }
 }
 
@@ -81,6 +81,7 @@ app-fab-scroll {
   position: fixed;
   bottom: 16px;
   right: 295px;
+  z-index: 3;
 }
 
 app-pikachu-loading {
