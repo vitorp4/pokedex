@@ -9,7 +9,7 @@
   z-index: 2;
   min-width: 100%;
 
-  &:focus-within {
+  &.active {
     box-shadow: 4px 4px 15px 8px rgba(0,0,0,0.1);
   }
 }
