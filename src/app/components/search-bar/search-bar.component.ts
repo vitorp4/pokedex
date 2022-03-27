@@ -4,9 +4,11 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
   QueryList,
+  SimpleChanges,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -19,7 +21,7 @@ import { getPokemonName } from '../../common/common';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent implements OnInit, OnChanges {
   constructor(private pokeApiService: PokeApiService) {}
 
   pokeResult: any[] = [];
@@ -48,12 +50,21 @@ export class SearchBarComponent implements OnInit {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes.searchActive && changes.searchActive.currentValue !== undefined) {
+      if (this.searchActive) {
+        this.searchInput.nativeElement.focus();
+      } else {
+        this.searchInput.nativeElement.value = '';
+        this.pokeResult = [];
+        this.index = null;
+      }
+    }
+  }
+
   toggleSearchActive(bool?: boolean) {
-    if (bool !== undefined) {
-      setTimeout(() => this.searchActiveChange.emit(bool), 10);
-    } else
-      setTimeout(() => this.searchActiveChange.emit(!this.searchActive), 10);
-    if (!this.searchActive) this.searchInput.nativeElement.focus();
+    if (bool !== undefined) setTimeout(() => this.searchActiveChange.emit(bool), 10);
+    else setTimeout(() => this.searchActiveChange.emit(!this.searchActive), 10);
   }
 
   filterPokemons(event: any) {
