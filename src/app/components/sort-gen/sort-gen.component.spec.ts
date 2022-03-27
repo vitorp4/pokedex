@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SortRangeComponent } from './sort-range.component';
+import { SortGenComponent } from './sort-gen.component';
 
-describe('SortRangeComponent', () => {
-  let component: SortRangeComponent;
-  let fixture: ComponentFixture<SortRangeComponent>;
+describe('SortGenComponent', () => {
+  let component: SortGenComponent;
+  let fixture: ComponentFixture<SortGenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SortRangeComponent ]
+      declarations: [ SortGenComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SortRangeComponent);
+    fixture = TestBed.createComponent(SortGenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

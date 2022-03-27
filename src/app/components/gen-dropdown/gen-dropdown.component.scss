@@ -26,7 +26,7 @@
 
 .dropdown {
   position: absolute;
-  width: 300px;
+  width: 250px;
   background-color: white;
   border-radius: 8px;
   border: 1px solid rgb(238, 238, 238);
@@ -68,10 +68,10 @@
   padding: 1px 0;
 }
 
-.dropdown fieldset.gen label input {
+.dropdown fieldset input[type="checkbox"] {
   margin: 0;
   appearance: none;
-  border: 1px solid var(--text-title-color);
+  border: 1px solid #222f46;
   border-radius: 2px;
   width: 12px;
   height: 12px;
@@ -99,12 +99,23 @@
   }
 }
 
-.dropdown fieldset.range input {
-  padding-left: 4px;
-  margin: 0 4px;
-  border-radius: 4px;
-  width: 60px;
+.dropdown button {
+  background-color: rgb(221, 78, 78);
+  border: none;
   font-family: 'Poppins', sans-serif;
-  color: var(--text-title-color);
-  border: 1px solid var(--text-title-color);
+  border-radius: 3px;
+  font-weight: 500;
+  color: white;
+  font-size: 12px;
+  padding: 3px 8px;
+  margin: 6px 0 8px 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(202, 63, 63);
+  }
+
+  &:active {
+    background-color: rgb(182, 52, 52);
+  }
 }

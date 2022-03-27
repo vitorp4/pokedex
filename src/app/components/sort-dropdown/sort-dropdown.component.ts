@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+
+export interface SortResult {
+  by: 'id' | 'name';
+  direction: 'asc' | 'desc';
+}
 
 @Component({
   selector: 'app-sort-dropdown',
@@ -8,7 +15,13 @@ import { Component, OnInit } from '@angular/core';
 export class SortDropdownComponent implements OnInit {
   constructor() {}
 
+
+  @ViewChild('form') form!: ElementRef<HTMLFormElement>;
+  @Output() formResult: EventEmitter<SortResult> = new EventEmitter<SortResult>();
   active = false;
+  defaultSortBy = 'id';
+  defaultSortDirection = 'asc';
+
   ngOnInit(): void {
     window.addEventListener('click', (event: any) => {
       let isInSortDropdown = event.path.some(
@@ -22,5 +35,10 @@ export class SortDropdownComponent implements OnInit {
 
   toggleActive() {
     this.active = !this.active;
+  }
+
+  onSubmit(form: NgForm) {
+    this.formResult.emit(form.value);
+    this.active = false;
   }
 }

@@ -20,7 +20,6 @@ export class EntryComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     if (changes.pokemon && changes.pokemon.currentValue !== undefined) {
       this.updateState();
     }
@@ -48,7 +47,6 @@ export class EntryComponent implements OnInit, OnChanges {
       this.weakness = this.typesInfo[0].damage_relations.double_damage_from.map(
         (i: any) => i.name
       );
-      console.log(this.weakness);
     } else {
       let aux: string[] = [];
 

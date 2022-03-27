@@ -69,7 +69,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  border: 1px solid var(--text-title-color);
+  border: 1px solid #222f46;
   position: relative;
   cursor: pointer;
 
@@ -90,4 +90,25 @@
 .dropdown fieldset.direction {
   display: flex;
   flex-flow: column nowrap;
+}
+
+.dropdown button {
+  background-color: rgb(221, 78, 78);
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 3px;
+  font-weight: 500;
+  color: white;
+  font-size: 12px;
+  padding: 3px 8px;
+  margin: 6px 0 8px 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(202, 63, 63);
+  }
+
+  &:active {
+    background-color: rgb(182, 52, 52);
+  }
 }

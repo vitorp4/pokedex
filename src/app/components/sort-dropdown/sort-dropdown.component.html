@@ -40,17 +40,18 @@
   </div>
 
   <div class="dropdown" [class.hidden]="!active">
-    <form>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <fieldset class="sort">
         <legend>Sort by</legend>
-        <label> <input type="radio" name="by" checked />Id</label>
-        <label> <input type="radio" name="by" /> Name</label>
+        <label> <input type="radio" name="by" checked value="id" [ngModel]="defaultSortBy" />Id</label>
+        <label> <input type="radio" name="by" value="name" [ngModel]="defaultSortBy" /> Name</label>
       </fieldset>
       <fieldset class="direction">
         <legend>Sort direction</legend>
-        <label><input type="radio" name="direction" checked /> Ascending</label>
-        <label><input type="radio" name="direction" /> Descending</label>
+        <label><input type="radio" name="direction" value="asc" [ngModel]="defaultSortDirection" /> Ascending</label>
+        <label><input type="radio" name="direction" value="desc" [ngModel]="defaultSortDirection" /> Descending</label>
       </fieldset>
+      <button type="submit">Apply</button>
     </form>
   </div>
 </div>

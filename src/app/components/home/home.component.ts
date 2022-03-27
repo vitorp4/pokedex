@@ -1,3 +1,5 @@
+import { GenResult, gens } from './../gen-dropdown/gen-dropdown.component';
+import { SortResult } from './../sort-dropdown/sort-dropdown.component';
 import { EntryComponent } from './../entry/entry.component';
 import { PokeApiService } from './../../services/poke-api.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -10,7 +12,7 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private pokeapi: PokeApiService) {}
+  constructor(private pokeApiService: PokeApiService) {}
   firstPoke!: any;
   pokemons: any[] = [];
   activePokemon: any;
@@ -21,23 +23,29 @@ export class HomeComponent implements OnInit {
   pastScrollTop = 0;
   searchActive = false;
   loadingInitial = false;
+  loadingGen = false;
   showFabScrollTop = false;
+
+  actualSort: SortResult = {
+    by: 'id',
+    direction: 'asc'
+  }
 
   ngOnInit(): void {
     this.loadingInitial = true;
-    this.pokeapi
-    .getPokemonsByRange(151, 0)
-    .pipe(take(1))
-    .subscribe((result) =>
-    Promise.all(
-      result.results.map((obj: any) =>
-      this.pokeapi.getPokemonByName(obj.name).toPromise()
+    this.pokeApiService
+      .getPokemonsByRange(151, 0)
+      .pipe(take(1))
+      .subscribe((result) =>
+        Promise.all(
+          result.results.map((obj: any) =>
+            this.pokeApiService.getPokemonByName(obj.name).toPromise()
           )
-          ).then((result: any) => {
-            this.pokemons = result;
-            this.activePokemon = result[0];
+        ).then((result: any) => {
+          this.pokemons = result;
+          this.onSortResult(this.actualSort);
 
-          setTimeout(() => this.loadingInitial = false,0);
+          this.loadingInitial = false;
         })
       );
 
@@ -80,6 +88,65 @@ export class HomeComponent implements OnInit {
   }
 
   scrollToTop() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  onSortResult(event: SortResult) {
+    this.pokemons = this.pokemons.sort((a: any, b: any) => {
+      if (event.direction === 'asc') {
+        if (event.by === 'id') {
+          return a.id - b.id;
+        } else if (event.by === 'name') {
+          return a.name.localeCompare(b.name);
+        }
+      } else if (event.direction === 'desc') {
+        if (event.by === 'id') {
+          return b.id - a.id;
+        } else if (event.by === 'name') {
+          return b.name.localeCompare(a.name);
+        }
+      }
+    });
+
+    this.activePokemon = this.pokemons[0];
+    this.actualSort = event;
+  }
+
+  onGenResult(event: any) {
+    this.loadingGen = true;
+    let ranges = [];
+
+    for (const key of Object.keys(event)) {
+      if (event[key]) {
+        const gen = gens.find(
+          (g) => g.id === `${key.slice(0, 3)}-${key.slice(4).toLowerCase()}`
+        );
+
+        ranges.push(gen.range);
+      }
+    }
+
+    Promise.all(
+      ranges.map((r) =>
+        this.pokeApiService
+          .getPokemonsByRange(r.to - r.from, r.from-1)
+          .toPromise()
+      )
+    ).then((result: any) => {
+      let result2: any = result.reduce((acc: any, arr: any) => acc.concat(arr.results), []);
+      Promise.all(
+        result2.map((p: any) =>
+          this.pokeApiService.getPokemonByName(p.name).toPromise()
+        )
+      ).then((result) => {
+        this.pokemons = result;
+        this.loadingGen = false;
+        this.onSortResult(this.actualSort);
+      });
+    });
+  }
+
+  trackPokemonById(index: number, pokemon: any) {
+    return pokemon.id;
   }
 }

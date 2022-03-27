@@ -13,12 +13,13 @@ import { RouterModule } from '@angular/router';
 import { PokeApiService } from './services/poke-api.service';
 import { SearchButtonComponent } from './components/search-button/search-button.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { SortRangeComponent } from './components/sort-range/sort-range.component';
+import { SortGenComponent } from './components/sort-gen/sort-gen.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { FabScrollComponent } from './components/fab-scroll/fab-scroll.component';
 import { PikachuLoadingComponent } from './components/pikachu-loading/pikachu-loading.component';
 import { SortDropdownComponent } from './components/sort-dropdown/sort-dropdown.component';
 import { GenDropdownComponent } from './components/gen-dropdown/gen-dropdown.component';
+import { FormsModule } from '@angular/forms';
 
 const routes = [
   {
@@ -43,7 +44,7 @@ const routes = [
     PrevNextComponent,
     SearchButtonComponent,
     SearchBarComponent,
-    SortRangeComponent,
+    SortGenComponent,
     SearchResultComponent,
     FabScrollComponent,
     PikachuLoadingComponent,
@@ -53,7 +54,8 @@ const routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [PokeApiService],
   bootstrap: [AppComponent]

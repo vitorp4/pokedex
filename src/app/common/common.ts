@@ -28,6 +28,7 @@ let correctNames = [
   'zygarde',
   'deoxys',
   'oricorio',
+  'toxtricity',
   'lycanroc',
   'wishiwashi',
   'minior',

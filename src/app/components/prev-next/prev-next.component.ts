@@ -39,7 +39,6 @@ export class PrevNextComponent implements OnInit, OnChanges {
       Promise.all(
         ids.map((id) => this._pokeApiService.getPokemonById(id).toPromise())
       ).then((result) => {
-        console.log(result);
         this.prev = result[0];
         this.next = result[1];
       });

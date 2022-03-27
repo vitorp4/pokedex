@@ -1,4 +1,7 @@
-<app-pikachu-loading [hidden]="!loadingInitial"></app-pikachu-loading>
+<app-pikachu-loading
+  class="initial"
+  [hidden]="!loadingInitial"
+></app-pikachu-loading>
 
 <ng-container *ngIf="!loadingInitial">
   <div class="backdrop" *ngIf="searchActive"></div>
@@ -10,15 +13,26 @@
         [class.active]="searchActive"
         (updatePoke)="setActivePokemon($event)"
       ></app-search-bar>
-      <app-sort-range></app-sort-range>
-      <div class="poke-grid-container">
+
+      <app-sort-gen
+        (sortResult)="onSortResult($event)"
+        (genResult)="onGenResult($event)"
+      ></app-sort-gen>
+
+      <app-pikachu-loading
+        class="gen"
+        [hidden]="!loadingGen"
+      ></app-pikachu-loading>
+
+      <div class="poke-grid-container" *ngIf="!loadingGen">
         <app-card
-          *ngFor="let poke of pokemons"
+          *ngFor="let poke of pokemons; trackBy: trackPokemonById"
           [poke]="poke"
           (click)="setActivePokemon(poke)"
         ></app-card>
       </div>
     </div>
+
     <app-entry
       [class.search-active]="searchActive"
       (update)="setActivePokemon($event)"
@@ -27,6 +41,7 @@
       #entry
     ></app-entry>
   </div>
+
   <app-fab-scroll
     *ngIf="showFabScrollTop"
     (click)="scrollToTop()"

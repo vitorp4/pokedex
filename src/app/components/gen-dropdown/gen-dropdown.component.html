@@ -54,25 +54,25 @@
         stroke-linejoin="round"
       />
     </svg>
-    Generation
+    Generations
   </div>
 
   <div class="dropdown" [class.hidden]="!active">
-    <form>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <fieldset class="gen">
-        <legend>Generations:</legend>
+        <legend>Generations</legend>
         <ng-container *ngFor="let gen of gens; let i = index">
-
-          <label> <input type="checkbox" [checked]="i==0" />{{ gen.label }} ({{gen.range.from }} - {{gen.range.to}})</label>
+          <label>
+            <input
+              type="checkbox"
+              [name]="gen.id"
+              [value]="gen.id"
+              [ngModel]="gen.id=='gen-i'"
+            />{{ gen.label }} ({{ gen.range.from }} - {{ gen.range.to }})</label
+          >
         </ng-container>
       </fieldset>
-      <fieldset class="range">
-        <legend>Custom range:</legend>
-        <label for="from">from</label>
-        <input id="from" type="number" min="1" max="898" />
-        <label for="to" name>to</label>
-        <input id="to" type="number" min="1" max="898"/>
-      </fieldset>
+      <button type="submit">Apply</button>
     </form>
   </div>
 </div>
