@@ -41,7 +41,7 @@
 
   &.hidden {
     opacity: 0;
-    transform: translate(2px,-5px) scale(0.98);
+    transform: translate(2px,-5px);
     transition: none;
     pointer-events: none;
   }
