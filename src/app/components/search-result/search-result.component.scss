@@ -1,43 +1,59 @@
+:host {
+  width: 100%;
+
+  &.hover .result-wrapper {
+    background-color: var(--nav-background-color);
+  }
+}
+
 .result-wrapper {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
   width: 100%;
   padding: 8px 16px;
-  gap: 16px;
+  min-height: 67px;
   align-items: center;
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
 
   &:hover {
-    background-color: var(--stat-TOT-background-color);
+    background-color: var(--nav-background-color);
   }
 }
 
-.result-wrapper .poke-img {
+.result-wrapper .poke-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.result-wrapper .poke-wrapper .poke-img {
   width: 50px;
   height: auto;
 }
 
-.result-wrapper .poke-id {
+.result-wrapper .poke-wrapper .poke-id {
   font-weight: 700;
   font-size: 12px;
   color: var(--text-number-color);
 }
 
-.result-wrapper .poke-name {
+.result-wrapper .poke-wrapper .poke-name {
   text-transform: capitalize;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--text-title-color);
   font-weight: 700;
 }
 
-.result-wrapper .type-badges-container {
+.result-wrapper .poke-wrapper .type-badges-container {
   display: flex;
   flex-flow: row nowrap;
   gap: 8px;
 }
 
-.result-wrapper .type-badges-container .type-badge {
+.result-wrapper .poke-wrapper .type-badges-container .type-badge {
   border-radius: 5px;
   text-transform: uppercase;
   padding: 4px 8px;

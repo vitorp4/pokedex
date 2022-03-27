@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
   pastScrollTop = 0;
   searchActive = false;
   loadingInitial = false;
-  showFabScrollTop = false;  
-  
+  showFabScrollTop = false;
+
   ngOnInit(): void {
     this.loadingInitial = true;
     this.pokeapi
@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit {
           ).then((result: any) => {
             this.pokemons = result;
             this.activePokemon = result[0];
- 
-          setTimeout(() => this.loadingInitial = false,3000);
+
+          setTimeout(() => this.loadingInitial = false,0);
         })
       );
 

@@ -3,6 +3,8 @@
     height: 100%;
     width: 100%;
     background-color: transparent;
+    transform: rotate(180deg);
+
 
     &::after {
       width: 3px;
@@ -54,18 +56,14 @@
   width: 55%;
   background-color: #fff;
   border-radius: 50%;
-  transition: 0.5s;
-
-  &.rotate {
-    transform: rotate(180deg);
-  }
+  transition: transform 0.5s;
 }
 
 .inner-pokeball::after {
   content: "";
   position: absolute;
   background-color: #fff;
-  border: 3.5px solid #fa5150;
+  border: 2.5px solid #fa5150;
   border-radius: 50%;
   width: 20%;
   height: 20%;
@@ -78,7 +76,7 @@
   content: "";
   background-color: #fa5150;
   width: 100%;
-  height: 3px;
+  height: 2.6px;
   top: 50%;
   left: 0;
   position: absolute;

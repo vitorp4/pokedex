@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterSelectComponent } from './filter-select.component';
+import { SortDropdownComponent } from './sort-dropdown.component';
 
-describe('FilterSelectComponent', () => {
-  let component: FilterSelectComponent;
-  let fixture: ComponentFixture<FilterSelectComponent>;
+describe('SortDropdownComponent', () => {
+  let component: SortDropdownComponent;
+  let fixture: ComponentFixture<SortDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterSelectComponent ]
+      declarations: [ SortDropdownComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterSelectComponent);
+    fixture = TestBed.createComponent(SortDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -108,6 +108,8 @@ export class EvolutionComponent implements OnInit, OnChanges {
       case 'level-up':
         if (evo_details.min_level) {
           appendPath += `l${evo_details.min_level}`;
+          appendPath += evolve_to_specie === 'solgaleo' ? 's' : '';
+          appendPath += evolve_to_specie === 'lunala' ? 'm' : '';
         } else if (evo_details.min_happiness) {
           appendPath += 'happiness';
           appendPath += evo_details.time_of_day ? evo_details.time_of_day : '';
@@ -129,7 +131,7 @@ export class EvolutionComponent implements OnInit, OnChanges {
           appendPath +=
             evo_details.party_species.name === 'remoraid' ? 'remoraid223' : '';
         }
-        break;
+                break;
       case 'trade':
         appendPath += 'trade';
         if (evo_details.held_item) {

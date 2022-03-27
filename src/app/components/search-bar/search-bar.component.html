@@ -1,12 +1,33 @@
 <div class="search-wrapper" [class.active]="searchActive">
   <input
+    #searchInput
     type="text"
     (focus)="toggleSearchActive(true)"
-    (keyup)="filterPokemons($event)"
+    (keyup)="keyupActions($event)"
+    (keydown)="keydownActions($event)"
     placeholder="Search your Pokémon!"
   />
-  <app-search-button [class.active]="searchActive" (click)="toggleSearchActive()"></app-search-button>
+  <app-search-button
+    [class.active]="searchActive"
+    (click)="toggleSearchActive()"
+  ></app-search-button>
 </div>
-<div class="search-results" *ngIf="searchActive">
-  <app-search-result *ngFor="let poke of pokeResult" [poke]="poke" (click)="emitPokemon(poke)"></app-search-result>
+<div
+  class="search-results"
+  *ngIf="searchActive"
+  [style.min-height]="pokeResult.length === 0 ? '300px' : ''"
+  #listWrapper
+>
+  <div *ngIf="pokeResult.length === 0 && !loading" class="msg-placeholder">
+    <ng-container *ngIf="searchInput.value.length < 3; else notFound">
+      Type part of a pokemon name to see the result!<br />
+      You must type at least 3 characters :)
+    </ng-container>
+    <ng-template #notFound> No pokemon's name matched. </ng-template>
+  </div>
+  <app-search-result
+    *ngFor="let poke of pokeResult"
+    [poke]="poke"
+    (click)="emitPokemon(poke)"
+  ></app-search-result>
 </div>

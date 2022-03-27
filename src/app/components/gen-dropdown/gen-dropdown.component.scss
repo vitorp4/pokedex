@@ -1,0 +1,110 @@
+.container {
+  position: relative;
+}
+
+.display {
+  padding: 8px 16px 8px 8px;
+  background-color: white;
+  border: 1px solid rgb(238, 238, 238);
+  box-shadow: 2px 3px 10px rgba(5, 5, 165, 0.05);
+  border-radius: 8px;
+  color: var(--text-title-color);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 2px 3px 10px rgba(3, 3, 119, 0.12);
+  }
+
+  &:active {
+  transform: scale(0.95);
+  }
+}
+
+.dropdown {
+  position: absolute;
+  width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid rgb(238, 238, 238);
+  box-shadow: 2px 3px 10px rgba(3, 3, 119, 0.12);
+  margin-top: 10px;
+  z-index: 100;
+  padding: 8px;
+  right: 0;
+  opacity: 1;
+  transform-origin: top right;
+  transition: transform 0.5s;
+
+  &.hidden {
+    opacity: 0;
+    transform: translate(2px,-5px) scale(0.98);
+    transition: none;
+    pointer-events: none;
+  }
+}
+
+.dropdown fieldset {
+  font-size: 13px;
+  border: none;
+}
+
+.dropdown legend {
+  color: var(--text-number-color);
+}
+
+.dropdown label {
+  cursor: pointer;
+}
+
+.dropdown fieldset.gen label {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 0;
+}
+
+.dropdown fieldset.gen label input {
+  margin: 0;
+  appearance: none;
+  border: 1px solid var(--text-title-color);
+  border-radius: 2px;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  cursor: pointer;
+
+  &:active {
+    border: 2px solid rgb(221, 78, 78);
+  }
+
+  &:checked {
+    background-color: rgb(221, 78, 78);
+    border-color: rgb(221, 78, 78);
+    transition: background-color 0.2s;
+  }
+
+  &:checked::before {
+    content: "\2714";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+  }
+}
+
+.dropdown fieldset.range input {
+  padding-left: 4px;
+  margin: 0 4px;
+  border-radius: 4px;
+  width: 60px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-title-color);
+  border: 1px solid var(--text-title-color);
+}

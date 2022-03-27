@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterBarComponent } from './filter-bar.component';
+import { GenDropdownComponent } from './gen-dropdown.component';
 
-describe('FilterBarComponent', () => {
-  let component: FilterBarComponent;
-  let fixture: ComponentFixture<FilterBarComponent>;
+describe('GenDropdownComponent', () => {
+  let component: GenDropdownComponent;
+  let fixture: ComponentFixture<GenDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterBarComponent ]
+      declarations: [ GenDropdownComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterBarComponent);
+    fixture = TestBed.createComponent(GenDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="display" (click)="toggleActive()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M10 8L7 5L4 8"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M7 19V5"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M14 16L17 19L20 16"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M17 5V19"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    Sort
+  </div>
+
+  <div class="dropdown" [class.hidden]="!active">
+    <form>
+      <fieldset class="sort">
+        <legend>Sort by</legend>
+        <label> <input type="radio" name="by" checked />Id</label>
+        <label> <input type="radio" name="by" /> Name</label>
+      </fieldset>
+      <fieldset class="direction">
+        <legend>Sort direction</legend>
+        <label><input type="radio" name="direction" checked /> Ascending</label>
+        <label><input type="radio" name="direction" /> Descending</label>
+      </fieldset>
+    </form>
+  </div>
+</div>

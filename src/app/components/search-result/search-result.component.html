@@ -1,17 +1,31 @@
 <div class="result-wrapper">
-  <img
-    class="poke-img"
-    [src]="poke?.sprites.other['official-artwork'].front_default"
-  />
-  <div class="poke-id">#{{ poke?.id }}</div>
-  <div class="poke-name">{{ getPokemonName(poke?.name) }}</div>
-  <div class="type-badges-container">
-    <div
-      [style.backgroundColor]="'var(--' + type.type.name + '-type-color)'"
-      class="type-badge"
-      *ngFor="let type of poke?.types"
-    >
-      {{ type.type.name }}
+  <div class="poke-wrapper">
+    <img
+      class="poke-img"
+      [src]="poke?.sprites.other['official-artwork'].front_default"
+    />
+    <div class="poke-id">#{{ poke?.id }}</div>
+    <div class="poke-name">{{ getPokemonName(poke?.name) }}</div>
+    <div class="type-badges-container">
+      <div
+        [style.backgroundColor]="'var(--' + type.type.name + '-type-color)'"
+        class="type-badge"
+        *ngFor="let type of poke?.types"
+      >
+        {{ type.type.name }}
+      </div>
     </div>
   </div>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+    />
+  </svg>
 </div>

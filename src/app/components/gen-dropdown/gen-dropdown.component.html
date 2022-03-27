@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="display" (click)="toggleActive()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M18 3H6C5.448 3 5 3.448 5 4V20.113C5 20.603 5.397 21 5.887 21H15C17.209 21 19 19.209 19 17V4C19 3.448 18.552 3 18 3Z"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M14 12H8.828C8.371 12 8 11.629 8 11.172V6.828C8 6.371 8.371 6 8.828 6H15.172C15.629 6 16 6.371 16 6.828V10C16 11.105 15.105 12 14 12Z"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M13.437 16.75C13.299 16.75 13.187 16.862 13.188 17C13.188 17.138 13.3 17.25 13.438 17.25C13.576 17.25 13.688 17.138 13.688 17C13.688 16.862 13.576 16.75 13.437 16.75"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M15.437 14.75C15.299 14.75 15.187 14.862 15.188 15C15.188 15.138 15.3 15.25 15.438 15.25C15.576 15.25 15.688 15.138 15.688 15C15.688 14.862 15.576 14.75 15.437 14.75"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M9.44 14.75V17.25"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.69 16H8.19"
+        stroke="currentColor"
+        stroke-width="1.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    Generation
+  </div>
+
+  <div class="dropdown" [class.hidden]="!active">
+    <form>
+      <fieldset class="gen">
+        <legend>Generations:</legend>
+        <ng-container *ngFor="let gen of gens; let i = index">
+
+          <label> <input type="checkbox" [checked]="i==0" />{{ gen.label }} ({{gen.range.from }} - {{gen.range.to}})</label>
+        </ng-container>
+      </fieldset>
+      <fieldset class="range">
+        <legend>Custom range:</legend>
+        <label for="from">from</label>
+        <input id="from" type="number" min="1" max="898" />
+        <label for="to" name>to</label>
+        <input id="to" type="number" min="1" max="898"/>
+      </fieldset>
+    </form>
+  </div>
+</div>

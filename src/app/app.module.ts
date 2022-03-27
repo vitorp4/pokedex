@@ -14,11 +14,11 @@ import { PokeApiService } from './services/poke-api.service';
 import { SearchButtonComponent } from './components/search-button/search-button.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SortRangeComponent } from './components/sort-range/sort-range.component';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
-import { FilterSelectComponent } from './components/filter-select/filter-select.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { FabScrollComponent } from './components/fab-scroll/fab-scroll.component';
 import { PikachuLoadingComponent } from './components/pikachu-loading/pikachu-loading.component';
+import { SortDropdownComponent } from './components/sort-dropdown/sort-dropdown.component';
+import { GenDropdownComponent } from './components/gen-dropdown/gen-dropdown.component';
 
 const routes = [
   {
@@ -44,11 +44,11 @@ const routes = [
     SearchButtonComponent,
     SearchBarComponent,
     SortRangeComponent,
-    FilterBarComponent,
-    FilterSelectComponent,
     SearchResultComponent,
     FabScrollComponent,
-    PikachuLoadingComponent
+    PikachuLoadingComponent,
+    SortDropdownComponent,
+    GenDropdownComponent
   ],
   imports: [
     BrowserModule,
