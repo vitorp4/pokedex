@@ -39,7 +39,7 @@ Changing to the third generation using multiselect
 Searching for pokemons using the search bar
 ![search](./readme_imgs/search.png)
 
-Eevolutions ❤
+Eeveelutions ❤
 ![evos](./readme_imgs/evos.jpeg)
 
 ### 🔗 Links
